@@ -1,0 +1,155 @@
+<?page title="List Mahasiswa" contentType="text/html;charset=UTF-8"?>
+<?link rel="stylesheet" type="text/css"	href="/mdb/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/mdb/css/mdb.min.css" ?>
+<?link rel="stylesheet" type="text/css"	href="/font-awesome/css/all.css" ?>
+<?link rel="stylesheet" type="text/css"	href="/mdb/css/style.css" ?>
+<?link rel="stylesheet" type="text/css"	href="/mdb/css/zkstyle.css" ?>
+<zk xmlns:w="client" xmlns:n="native">
+	<window
+		viewModel="@id('vm') @init('com.sdd.LibRestAPI.viewmodel.MmahasiswalistVM')">
+		<div align="center">
+			<div class="row" width="70%">
+				<div class="card">
+					<div class="card-header">
+						<n:h2>
+							<n:i class="fas fa-list"></n:i>
+							List Mahasiswa
+						</n:h2>
+					</div>
+					<div class="card-body"
+						form="@id('e') @load(vm.objmhsw) @save(vm.objmhsw, before='doSave') @validator(vm.validator)">
+						<separator />
+						<div class="row">
+							<div class="col-md-12" align="right">
+								<button autodisable="self"
+									label="Add New" sclass="btn-primary" iconSclass="z-icon-plus"
+									onClick="@command('doAddnew')">
+								</button>
+							</div>
+						</div>
+						<separator />
+						<groupbox id="gbform"
+							onOpen="@command('doForm')">
+							<caption style="font-size: 18px;" id="capt"
+								label="Formulir Mahasiswa" />
+							<grid>
+								<columns>
+									<column width="10%" />
+									<column width="46%" />
+								</columns>
+								<rows>
+									<row>
+										<hlayout>
+											<label value="NPM" />
+											<label value="*"
+												style="color:red" />
+										</hlayout>
+										<hlayout>
+											<textbox
+												value="@bind(e.npm)" width="225px" />
+											<label
+												value="@load(vmsgs['npm'])" style="color:red" />
+										</hlayout>
+									</row>
+									<row>
+										<hlayout>
+											<label
+												value="Nama Mahasiswa" />
+											<label value="*"
+												style="color:red" />
+										</hlayout>
+										<hlayout>
+											<textbox
+												value="@bind(e.namaMahasiswa)" width="225px" />
+											<label
+												value="@load(vmsgs['namamahasiswa'])" style="color:red" />
+										</hlayout>
+									</row>
+									<row>
+										<hlayout>
+											<label value="Email" />
+											<label value="*"
+												style="color:red" />
+										</hlayout>
+										<hlayout>
+											<textbox
+												value="@bind(e.email)" width="225px" />
+											<label
+												value="@load(vmsgs['email'])" style="color:red" />
+										</hlayout>
+									</row>
+									<row>
+										<hlayout>
+											<label value="Alamat" />
+											<label value="*"
+												style="color:red" />
+										</hlayout>
+										<hlayout>
+											<textbox
+												value="@bind(e.alamat)" width="225px" />
+											<label
+												value="@load(vmsgs['alamat'])" style="color:red" />
+										</hlayout>
+									</row>
+									<row>
+										<hlayout>
+											<label
+												value="Jenis Kelamin" />
+											<label value="*"
+												style="color:red" />
+										</hlayout>
+										<hlayout>
+											<radiogroup
+												selectedItem="@bind(e.jenisKelamin)">
+												<radio id="rbl"
+													label="Laki-Laki" value="L" />
+												<radio id="rbp"
+													label="Perempuan" value="P" />
+											</radiogroup>
+											<label
+												value="@load(vmsgs['jeniskelamin'])" style="color:red" />
+										</hlayout>
+									</row>
+								</rows>
+								<foot>
+									<footer />
+									<footer>
+										<div width="230px"
+											align="right">
+											<button id="btnSave"
+												label="Save" onClick="@command('doSave')"
+												sclass="btn-primary" iconSclass="z-icon-save" />
+											<button id="btnCancel"
+												label="Cancel" onClick="@command('doCancel')"
+												sclass="btn-default" iconSclass="z-icon-times" />
+											<button id="btnDelete"
+												label="Delete" onClick="@command('doDelete')"
+												sclass="btn-danger" iconSclass="z-icon-trash-o" />
+										</div>
+									</footer>
+								</foot>
+							</grid>
+						</groupbox>
+					</div>
+					<separator />
+					<div>
+						<listbox mold="paging" pageSize="10"
+							pagingPosition="top" id="listbox" sclass="table-bordered"
+							selectedItem="@bind(vm.objmhsw)">
+							<listhead>
+								<listheader label="No." width="50px"
+									align="center" />
+								<listheader label="NPM" width="150px"
+									align="center" />
+								<listheader label="Nama Mahasiswa" />
+								<listheader label="Email" />
+								<listheader label="Alamat" />
+								<listheader label="Jenis Kelamin" />
+							</listhead>
+						</listbox>
+					</div>
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,6 @@
+<?page title="Form Mahasiswa" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Form Mahasiswa" border="normal">
+New Content Here!
+</window>
+</zk>

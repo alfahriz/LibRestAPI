@@ -1,0 +1,83 @@
+<?page title="${desktop.webApp.appName}" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:w="client" xmlns:n="native">
+	<window>
+		<div align="center">
+			<div class="row" width="50%">
+				<groupbox id="gbform">
+					<caption style="font-size: 18px;" id="capt"
+						label="Daftar Mahasiswa" />
+					<grid>
+						<columns>
+							<column width="10%" />
+							<column width="46%" />
+						</columns>
+						<rows>
+							<row>
+								<label value="Nama Mahasiswa" />
+								<textbox id="tbmhs" width="400px" />
+							</row>
+							<row>
+								<label value="NPM" />
+								<textbox id="tbnpm" width="400px" />
+							</row>
+							<row>
+								<label value="Email" />
+								<textbox id="tbemail" width="400px" />
+							</row>
+							<row>
+								<label value="Alamat" />
+								<textbox id="tbalamat" width="400px" />
+							</row>
+							<row>
+								<label value="Jenis Kelamin" />
+								<textbox id="tbamname" width="400px" />
+							</row>
+						</rows>
+						<foot>
+							<footer />
+							<footer>
+								<div class="row">
+									<div class="col-md-12"
+										align="right">
+										<separator />
+										<button id="btnSave"
+											label="Save" class="${labels.button.submit}"
+											onClick="@command('doSave')" autodisable="self"
+											sclass="btn-primary" iconSclass="z-icon-save" />
+										<button id="btnCancel"
+											label="Cancel" class="${labels.button.cancel}"
+											onClick="@command('doCancel')" autodisable="self"
+											sclass="btn-default" iconSclass="z-icon-times" />
+										<button id="btnDelete"
+											label="Delete" class="${labels.button.delete}"
+											onClick="@command('doDelete')" autodisable="self"
+											sclass="btn-danger" iconSclass="z-icon-trash-o" />
+									</div>
+								</div>
+							</footer>
+							<footer />
+						</foot>
+					</grid>
+				</groupbox>
+				<separator />
+				<separator />
+				<div>
+					<listbox mold="paging" pageSize="20"
+						pagingPosition="top" id="listbox" sclass="table-bordered">
+						<listhead>
+							<listheader label="No" align="center"
+								width="50px" />
+							<listheader label="Nama Mahasiswa"
+								width="300px" />
+							<listheader label="NPM" width="180px" />
+							<listheader label="Email" width="180px" />
+							<listheader label="Alamat" width="300px" />
+							<listheader label="Jenis Kelamin"
+								width="125px" />
+						</listhead>
+					</listbox>
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>
